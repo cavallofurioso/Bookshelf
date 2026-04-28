@@ -1,5 +1,7 @@
 # Bookshelf App
 
+<img width="1335" height="475" alt="image" src="https://github.com/user-attachments/assets/ad848c89-c206-436c-ac5f-a2b013135e2e" />
+
 App server-side per gestire un indice personale di libri, raggiungibile via browser su porta 8080.
 
 ## Stack
