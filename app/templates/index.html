@@ -36,10 +36,6 @@
       <option value="">Year Read</option>
       {% for y in years %}<option value="{{ y }}" {% if year_read==y %}selected{% endif %}>{{ y }}</option>{% endfor %}
     </select>
-    <select name="status">
-      <option value="">Status</option>
-      {% for s in statuses %}<option value="{{ s }}" {% if status==s %}selected{% endif %}>{{ s }}</option>{% endfor %}
-    </select>
     <input type="hidden" name="sort_by" value="{{ sort_by }}">
     <input type="hidden" name="sort_dir" value="{{ sort_dir }}">
     <a class="btn btn-ghost" href="/">Reset filters</a>
@@ -55,7 +51,6 @@
           <th><a href="/?q={{ q|urlencode }}&reading_bucket={{ reading_bucket|urlencode }}&year_read={{ year_read|urlencode }}&status={{ status|urlencode }}&sort_by=author&sort_dir={{ sort_toggle(sort_by, sort_dir, 'author') }}">Author{% if sort_by == 'author' %} {{ '↑' if sort_dir == 'asc' else '↓' }}{% endif %}</a></th>
           <th><a href="/?q={{ q|urlencode }}&reading_bucket={{ reading_bucket|urlencode }}&year_read={{ year_read|urlencode }}&status={{ status|urlencode }}&sort_by=reading_state&sort_dir={{ sort_toggle(sort_by, sort_dir, 'reading_state') }}">Reading State{% if sort_by == 'reading_state' %} {{ '↑' if sort_dir == 'asc' else '↓' }}{% endif %}</a></th>
           <th><a href="/?q={{ q|urlencode }}&reading_bucket={{ reading_bucket|urlencode }}&year_read={{ year_read|urlencode }}&status={{ status|urlencode }}&sort_by=year_read&sort_dir={{ sort_toggle(sort_by, sort_dir, 'year_read') }}">Year Read{% if sort_by == 'year_read' %} {{ '↑' if sort_dir == 'asc' else '↓' }}{% endif %}</a></th>
-          <th><a href="/?q={{ q|urlencode }}&reading_bucket={{ reading_bucket|urlencode }}&year_read={{ year_read|urlencode }}&status={{ status|urlencode }}&sort_by=status&sort_dir={{ sort_toggle(sort_by, sort_dir, 'status') }}">Status{% if sort_by == 'status' %} {{ '↑' if sort_dir == 'asc' else '↓' }}{% endif %}</a></th>
           <th><a href="/?q={{ q|urlencode }}&reading_bucket={{ reading_bucket|urlencode }}&year_read={{ year_read|urlencode }}&status={{ status|urlencode }}&sort_by=location&sort_dir={{ sort_toggle(sort_by, sort_dir, 'location') }}">Location{% if sort_by == 'location' %} {{ '↑' if sort_dir == 'asc' else '↓' }}{% endif %}</a></th>
           <th class="actions-col">Actions</th>
         </tr>
@@ -67,7 +62,6 @@
           <td data-label="Author">{{ book.author or '—' }}</td>
           <td data-label="Reading State"><span class="state-pill state-{{ book.reading_bucket or 'other' }}">{{ (book.reading_bucket or 'other').replace('_',' ')|title }}</span></td>
           <td data-label="Year Read">{{ book.year_read or '—' }}</td>
-          <td data-label="Status">{{ book.status_raw or '—' }}</td>
           <td data-label="Location">{{ book.location or '—' }}</td>
           <td data-label="Actions" class="actions-cell">
             <div class="actions-inline">
@@ -83,7 +77,7 @@
           </td>
         </tr>
         {% else %}
-        <tr><td colspan="7" class="empty-cell">No books found.</td></tr>
+        <tr><td colspan="6" class="empty-cell">No books found.</td></tr>
         {% endfor %}
       </tbody>
     </table>

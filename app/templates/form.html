@@ -16,8 +16,15 @@
     <label>Title *<input required type="text" name="title" value="{{ book.title if book else '' }}"></label>
     <label>Author<input type="text" name="author" value="{{ book.author if book else '' }}"></label>
     <label>Release Date<input type="text" name="release_date" value="{{ book.release_date if book else '' }}"></label>
+    <label>Reading Status
+    <select name="status_raw">
+    <option value="">— select —</option>
+    <option value="Read"      {% if book and book.status_raw == 'Read' %}selected{% endif %}>Read</option>
+    <option value="Not Read"  {% if book and book.status_raw == 'Not Read' %}selected{% endif %}>Not Read</option>
+    <option value="Reading"   {% if book and book.status_raw == 'Reading' %}selected{% endif %}>Reading</option>
+    </select>
+    </label>
     <label>Worth Reading<input type="text" name="worth_reading" value="{{ book.worth_reading if book else '' }}"></label>
-    <label>Status<input type="text" name="status_raw" value="{{ book.status_raw if book else '' }}"></label>
     <label>Year Read<input type="text" name="year_read" value="{{ book.year_read if book else '' }}"></label>
     <label>Location<input type="text" name="location" value="{{ book.location if book else '' }}"></label>
     <label>ISBN<input type="text" name="isbn" value="{{ book.isbn if book else '' }}"></label>
