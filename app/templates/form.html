@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="stats-strip compact">
+  <div class="stat-inline"><span>Total</span><strong>{{ stats.total }}</strong></div>
+  <div class="stat-inline"><span>Read</span><strong>{{ stats.read }}</strong></div>
+  <div class="stat-inline"><span>Not read</span><strong>{{ stats.not_read }}</strong></div>
+  <div class="stat-inline"><span>Reading</span><strong>{{ stats.reading }}</strong></div>
+</section>
+<section class="toolbar-row">
+  <a class="btn btn-secondary" href="/">Back to library</a>
+  <a class="btn btn-secondary" href="/statistics">Statistics</a>
+</section>
+<section class="panel form-panel">
+  <h1>{% if book %}Edit book{% else %}Add book{% endif %}</h1>
+  <form method="post" class="book-form">
+    <label>Title *<input required type="text" name="title" value="{{ book.title if book else '' }}"></label>
+    <label>Author<input type="text" name="author" value="{{ book.author if book else '' }}"></label>
+    <label>Release Date<input type="text" name="release_date" value="{{ book.release_date if book else '' }}"></label>
+    <label>Worth Reading<input type="text" name="worth_reading" value="{{ book.worth_reading if book else '' }}"></label>
+    <label>Status<input type="text" name="status_raw" value="{{ book.status_raw if book else '' }}"></label>
+    <label>Year Read<input type="text" name="year_read" value="{{ book.year_read if book else '' }}"></label>
+    <label>Location<input type="text" name="location" value="{{ book.location if book else '' }}"></label>
+    <label>ISBN<input type="text" name="isbn" value="{{ book.isbn if book else '' }}"></label>
+    <label>Current Page<input type="text" name="current_page" value="{{ book.current_page if book else '' }}"></label>
+    <label>Total Pages<input type="text" name="total_pages" value="{{ book.total_pages if book else '' }}"></label>
+    <label>Rating<input type="text" name="rating" value="{{ book.rating if book else '' }}"></label>
+    <label class="full">Description<textarea name="description" rows="4">{{ book.description if book else '' }}</textarea></label>
+    <label class="full">Notes<textarea name="notes" rows="4">{{ book.notes if book else '' }}</textarea></label>
+    <div class="form-actions">
+      <a class="btn btn-ghost" href="/">Cancel</a>
+      <button class="btn btn-primary" type="submit">Save</button>
+    </div>
+  </form>
+</section>
+{% endblock %}

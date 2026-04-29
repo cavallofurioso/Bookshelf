@@ -1,9 +1,6 @@
 # Bookshelf App
-A server-side app for managing a personal book index, accessible via browser on port 8080.
 
-
-<img width="1335" height="475" alt="image" src="https://github.com/user-attachments/assets/ad848c89-c206-436c-ac5f-a2b013135e2e" />
-
+App server-side per gestire un indice personale di libri, raggiungibile via browser su porta 8080.
 
 ## Stack
 - FastAPI
@@ -11,33 +8,32 @@ A server-side app for managing a personal book index, accessible via browser on 
 - SQLite
 - Docker / Docker Compose
 
-## Features
-- Book list with search
-- Filters by reading status, reading year, and raw status
-- Add, edit, and delete entries
-- Initial import from Excel
-- Top-level statistics (total, read, unread/not read, currently reading)
-- Light\Dark Mode
+## Funzioni
+- Elenco libri con ricerca
+- Filtri per stato di lettura, anno di lettura e stato raw
+- Aggiunta, modifica ed eliminazione
+- Import iniziale da Excel
+- Statistiche in alto (totale, letti, da leggere/non letti, in lettura)
 
-## Fields
-All fields are optional except `title`.
+## Campi
+Tutti opzionali tranne `title`.
 
-## Reading status mapping
-The app stores both:
-- `status_raw`: the original value imported from Excel
-- `reading_bucket`: a normalized value used for filters (`read`, `not_read`, `reading`, `other`)
+## Mapping stato lettura
+L'app salva sia:
+- `status_raw`: il valore originale importato da Excel
+- `reading_bucket`: valore normalizzato per i filtri (`read`, `not_read`, `reading`, `other`)
 
-## Run
+## Avvio
 ```bash
 docker compose up --build
 ```
 
-Then open:
+Poi apri:
 - http://localhost:8080
-- or http://YOUR-MACHINE-IP:8080 from your LAN
+- oppure http://IP-DELLA-MACCHINA:8080 dalla LAN
 
-## Excel import
-Import Excel allow to load a xlsx with no formatting (just like **Bookshelf - Demo.xlsx**)
+## Import da Excel
+Metti il file `Bookshelf.xlsx` nella cartella `imports/`, poi usa la pagina `Importa Excel` dall'interfaccia.
 
-## Import deduplication
-During import, a book is skipped if an entry with the same `title` + `author` pair already exists.
+## Deduplica import
+Durante l'import viene saltato un libro se esiste già una entry con stessa coppia `title` + `author`.
