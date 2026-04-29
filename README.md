@@ -1,7 +1,8 @@
 # Bookshelf
+App server-side per gestire un indice personale di libri, raggiungibile via browser su porta 8080.
+
 <img width="1311" height="532" alt="image" src="https://github.com/user-attachments/assets/d1d642aa-f29e-4387-9745-3daaab458a5a" />
 
-App server-side per gestire un indice personale di libri, raggiungibile via browser su porta 8080.
 
 ## Stack
 - FastAPI
